@@ -1,0 +1,58 @@
+题目描述
+移除数组 arr 中的所有值与 item 相等的元素，直接在给定的 arr 数组上进行操作，并将结果返回
+
+方法1：正着检测 for循环
+注意：需考虑位置影响
+function removeWithoutCopy(arr, item) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == item) {
+            arr.splice(i,1);
+            i--;
+        }
+    }
+    return arr;
+}
+
+方法2：倒着检测 for循环
+优点：不用考虑位置影响
+function removeWithoutCopy(arr, item) {
+  for (i = arr.length-1; i >= 0; i--) {
+    if (arr[i] == item) {
+      arr.splice(i,1);
+    }
+  }
+  return arr;
+}
+
+方法3：正着检测 while循环
+优点：不用考虑位置影响
+function removeWithoutCopy(arr, item) {
+    for(var i in arr){
+        while(arr[i]==item){
+            arr.splice(i,1);
+        }
+    }
+    return arr;
+}
+
+方法4：ES5
+indexOf方法--从数组起始位置开始查找
+缺点：每次都从头开始查，增加冗余
+function removeWithoutCopy(arr, item) {
+  for (var i = 0;i < arr.length; i++) {
+    var a = arr.indexOf(item);
+    arr.splice(a,1);
+  }
+  return arr;
+}
+
+方法5：ES6
+new Set()用于数组去重，set是一种新的数据结构，没有重复值；
+Array.from()用于将set结构转为数组；
+indexOf用于从数组起始位置开始查找
+function removeWithoutCopy(arr, item) {
+  arr = Array.from(new Set(arr));
+  var a = arr.indexOf(item);
+  arr.splice(a,i);
+  return arr;
+} 
