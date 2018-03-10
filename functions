@@ -1,0 +1,28 @@
+题目描述
+请修复给定的 js 代码中，函数定义存在的问题
+
+function functions(flag) {
+    if (flag) {
+      function getValue() { return 'a'; }
+    } else {
+      function getValue() { return 'b'; }
+    }
+
+    return getValue();
+}
+
+考点：function 函数名(){}   和  var 函数名 = function（）{}的解析顺序的区别
+前者是在执行之前就会被解析    后者是在执行过程中
+
+else中的语句相当于将if中的function重写，因此无论flag为何值，返回的方法始终为重写后的方法。
+将方法赋值给一个变量，方法就不会被重写，因此才能得到正确的结果。
+
+function functions(flag) {
+    if (flag) {
+      var getValue = function () { return 'a'; }
+    } else {
+      var getValue = function () { return 'b'; }
+    }
+    return getValue();
+}
+
