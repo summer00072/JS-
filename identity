@@ -1,0 +1,10 @@
+题目描述
+判断 val1 和 val2 是否完全等同
+
+function identity(val1, val2) {
+    return val1 === val2;
+}
+
+== equality 等同，=== identity 恒等。
+==， 两边值类型不同的时候，要先进行类型转换，再比较。 
+==，不做类型转换，类型不同的一定不等。 
