@@ -1,0 +1,54 @@
+题目描述
+删除数组 arr 最后一个元素。不要直接修改数组 arr，结果返回新的数组
+
+方法1：普通迭代
+function truncate(arr) {
+    var newArray = [];
+    for (var i = 0; i <(arr.length - 1); i++) {
+        newArray.push(arr[i]);
+    }
+    return newArray;
+}
+
+方法2：slice+pop
+function truncate(arr) {
+    var newArray = arr.slice(0);
+    newArray.pop();
+    return newArray;
+}
+
+方法3：slice
+function truncate(arr) {
+  return arr.slice(0,-1);
+}
+
+方法4：filter---返回值为true的所有数组元素
+function truncate(arr) {
+    return arr.filter(function(item,index,arr) {
+        return index!==arr.length-1;
+    });
+}
+
+方法5：push.apply + pop ---apply:预定义的函数方法，可用于调用函数，第一个参数必须是对象本身，第二个函数apply传入的是一个参数数组，call则是传入一个个参数。
+function truncate(arr) {
+  var newArray=[];
+  [].push.apply(newArray,arr);
+  newArray.pop();
+  return newArray;
+}
+
+方法6：concat+pop---concat合并两个数组
+function truncate(arr) {
+    var newArray = arr.concat();//复制数组
+    newArray.pop();
+    return newArray;
+}
+
+方法7：join+split+pop //不推荐
+join用指定分割符分割数组并转化为字符串，split将字符串按照某个字符切割成若干个字符串，并以数组形式返回
+function truncate（arr） {
+  var newArray = arr.join().split(',');
+  newaArray.pop();
+  return newArray;
+}
+
