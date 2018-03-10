@@ -1,0 +1,22 @@
+题目描述
+在数组 arr 中，查找值与 item 相等的元素出现的所有位置
+
+方法1：普通迭代
+function findAllOccurrences(arr, target) {
+    newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+            newArr.push(i);
+        }
+    }
+    return newArr;
+}
+
+方法2：或操作
+function findAllOccurrences(arr, target) {
+    newArr = [];
+    arr.forEach(function(ele, index) {
+      ele !== target || newArr.push(index);
+    });
+    return newArr;
+}
