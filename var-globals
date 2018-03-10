@@ -1,0 +1,20 @@
+题目描述
+给定的 js 代码中存在全局变量，请修复
+
+function globals() {
+    myObject = {
+      name : 'Jory'
+    };
+
+    return myObject;
+}
+
+在Javascript语言中，声明变量使用的都是关键字var，如果不使用var而直接声明变量，则该变量为全局变量。
+
+function globals() {
+    var myObject = {
+      name : 'Jory'
+    };
+
+    return myObject;
+}
